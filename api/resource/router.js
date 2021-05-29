@@ -5,12 +5,11 @@ const ResourceModel = require("./model");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  try {
-    const something = ResourceModel.find();
-    console.log(something);
-  } catch (error) {
-    next(error);
-  }
+  ResourceModel.find()
+    .then((resources) => {
+      res.status(200).json(resources);
+    })
+    .catch((error) => next(error));
 });
 
 router.get("/", (req, res, next) => {
@@ -20,7 +19,15 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  next();
+  const newResource = req.body;
+  ResourceModel.add(newResource)
+    .then((id) => {
+      res.status(200).json({
+        resource_id: id,
+        ...newResource,
+      });
+    })
+    .catch((error) => next(error));
 });
 
 module.exports = router;
