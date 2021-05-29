@@ -5,7 +5,7 @@ const ResourceModel = require("./model");
 const router = express.Router();
 
 router.post("/", (req, res, next) => {
-  ResourceModel.
+  next();
 });
 
 module.exports = router;
