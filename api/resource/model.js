@@ -2,12 +2,12 @@
 const db = require("../../data/dbConfig");
 
 const find = async (id) => {
-  const resources = await db("resource");
+  const resources = await db("resources");
   return resources;
 };
 
 const add = async (newResource) => {
-  const [id] = await db("resource").insert(newResource);
+  const [id] = await db("resources").insert(newResource);
   return id;
 };
 

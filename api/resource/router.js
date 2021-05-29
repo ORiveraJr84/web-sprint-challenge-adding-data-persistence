@@ -1,11 +1,11 @@
 // build your `/api/resources` router here
 const express = require("express");
-const ResourceModel = require("./model");
+const ResourcesModel = require("./model");
 
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  ResourceModel.find()
+  ResourcesModel.find()
     .then((resources) => {
       res.status(200).json(resources);
     })
@@ -20,7 +20,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   const newResource = req.body;
-  ResourceModel.add(newResource)
+  ResourcesModel.add(newResource)
     .then((id) => {
       res.status(200).json({
         resource_id: id,
