@@ -4,6 +4,14 @@ const ResourceModel = require("./model");
 
 const router = express.Router();
 
+router.get("/", (req, res, next) => {
+  res
+    .status(200)
+    .json({
+      message: "The resource endpoint is working. Try another endpoint.",
+    });
+});
+
 router.post("/", (req, res, next) => {
   next();
 });
