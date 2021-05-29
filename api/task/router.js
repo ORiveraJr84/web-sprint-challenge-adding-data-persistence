@@ -21,11 +21,8 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
   const newTask = req.body;
   TasksModel.add(newTask)
-    .then((id) => {
-      res.status(200).json({
-        task_id: id,
-        ...newTask,
-      });
+    .then((retrievedNewTask) => {
+      res.status(200).json(retrievedNewTask);
     })
     .catch((error) => next(error));
 });

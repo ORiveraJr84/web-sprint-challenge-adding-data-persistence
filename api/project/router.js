@@ -21,11 +21,8 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
   const newProject = req.body;
   ProjectModel.add(newProject)
-    .then((id) => {
-      res.status(200).json({
-        project_id: id,
-        ...newProject,
-      });
+    .then((retrievedNewProject) => {
+      res.status(200).json(retrievedNewProject);
     })
     .catch((error) => next(error));
 });
