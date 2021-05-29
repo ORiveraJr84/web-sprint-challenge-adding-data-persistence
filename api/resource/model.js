@@ -1,9 +1,9 @@
 // build your `Resource` model here
 const db = require("../../data/dbConfig");
 
-const find = async (id) => {
+const find = (id) => {
   try {
-    const something = await db("resources");
+    const something = db("resources");
     console.log(resources);
   } catch (error) {
     return error;
