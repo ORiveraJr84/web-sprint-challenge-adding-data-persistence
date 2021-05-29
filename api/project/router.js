@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
   res.status(200).json({
-    message: "The resource endpoint is working. Try another endpoint.",
+    message: "The project endpoint is working. Try another endpoint.",
   });
 });
 
@@ -23,7 +23,7 @@ router.post("/", (req, res, next) => {
   ProjectModel.add(newProject)
     .then((id) => {
       res.status(200).json({
-        resource_id: id,
+        project_id: id,
         ...newProject,
       });
     })
